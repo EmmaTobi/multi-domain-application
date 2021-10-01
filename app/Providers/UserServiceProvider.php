@@ -26,6 +26,8 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->app->bind(UserContract::class, function ($app){
+            return new UserService($app->make(CapsuleContract::class));
+        });
     }
 }
